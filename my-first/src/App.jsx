@@ -1,17 +1,27 @@
-import { Fragment } from "react";
-import MyHeading from "./components/MyHeading";
+import Header from "./components/Header";
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import "./styles/App.css";
+import "./styles/Header.css";
+import Product from "./components/Product";
 
-const a=200
+
+
 function App(){
-  return( 
-    <Fragment>
-  <div>
-    <MyHeading/>
-    <h1>Hello this is react with a={a}</h1>
-    <p>hey this is p</p>
-  </div>
-  </Fragment>
-  );
+  return <Router>
+    <Header/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/contact" element={<Contact/>}/>
+      {/* <Route path="/product/:id" element={<Product/>}/> */}
+
+      <Route path="*" element={<div>Page Not Found</div>}/>
+    </Routes>
+
+  </Router>
   
 }
 export default App;
